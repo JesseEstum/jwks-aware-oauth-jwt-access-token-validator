@@ -92,7 +92,8 @@ local function extract(config)
 end
 
 local function updateHeaders(config, token)
-  req_clear_header(config.token_header_name) -- Clear Original header from request
+  ngx.log(ngx.DEBUG, "***** JESTUM ***** NOT clearing header " .. config.token_header_name)
+  --req_clear_header(config.token_header_name) -- Clear Original header from request
   ngx.log(ngx.DEBUG, "Setting header: " .. config.upstream_jwt_header_name .. " with validated token")
   req_set_header(config.upstream_jwt_header_name, token)
 end
